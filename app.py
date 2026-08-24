@@ -34,7 +34,7 @@ with col4:
         ["Miete", "Autoversicherung", "Lizenzen", "Website", "Software", "Sonstiges"]
     )
 with col5:
-    konto = st.selectbox("Zahlungskonto", ["deton Hauptkonto", "Kreditkarte", "Paypal" "DKB"])
+    konto = st.selectbox("Zahlungskonto", ["deton Hauptkonto", "Kreditkarte", "Paypal", "DKB"])
 
 if st.button("Abo speichern", type="primary"):
     if name:
