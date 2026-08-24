@@ -65,12 +65,17 @@ if st.button("Abo speichern", type="primary"):
 st.divider()
 
 st.subheader("Aktuelle Abo-Übersicht")
-edited = st.data_editor(df, num_rows="dynamic", use_container_width=True)
 
-if st.button("Änderungen übernehmen & speichern"):
-    edited.to_csv(FILE, index=False)
-    st.success("Tabelle aktualisiert.")
-    st.rerun()
+# Wir erlauben das direkte Bearbeiten und Löschen in der Tabelle
+edited = st.data_editor(df, num_rows="dynamic", use_container_width=True, key="abo_table")
+
+# Ein klarer Button zum Speichern von Änderungen ODER Löschungen
+col_s1, col_s2 = st.columns([1, 4])
+with col_s1:
+    if st.button("Speichern / Löschen anwenden", type="primary"):
+        edited.to_csv(FILE, index=False)
+        st.success("Änderungen erfolgreich gespeichert!")
+        st.rerun()
 
 st.divider()
 st.subheader("Finanz-Auswertung & Cashflow")
